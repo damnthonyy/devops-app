@@ -32,7 +32,7 @@ jobs:
     environment: staging
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-tools/action.yml
+      - uses: ./.github/actions/setup-tools
         with:
           terraform-version: '1.7.0'
       - run: echo "Deploying to staging..."
@@ -42,7 +42,7 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-tools/action.yml
+      - uses: ./.github/actions/setup-tools
         with:
           terraform-version: '1.7.0'
       - run: echo "Deploying to production..."
