@@ -82,7 +82,9 @@ function renderMetrics() {
     lines.push(
       `http_request_duration_seconds_sum{${formatLabels(labels)}} ${stats.sum.toFixed(6)}`
     );
-    lines.push(`http_request_duration_seconds_count{${formatLabels(labels)}} ${stats.count}`);
+    lines.push(
+      `http_request_duration_seconds_count{${formatLabels(labels)}} ${stats.count}`
+    );
   }
 
   return `${lines.join("\n")}\n`;
@@ -145,3 +147,4 @@ const port = Number(process.env.PORT || 3000);
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
