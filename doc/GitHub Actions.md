@@ -6,8 +6,7 @@ Maîtriser les fonctionnalités avancées de GitHub Actions : workflows réutili
 ## Consignes
 
 ### 1. Workflow réutilisable
-
-Créer `.github/workflows/reusable-docker.yml` :
+Workflow réutilisable `.github/workflows/reusable-docker.yml` (déjà en place) :
 
 ```yaml
 name: Reusable Docker Build
@@ -99,6 +98,10 @@ Ajouter au pipeline :
     runs-on: ubuntu-latest
     environment: staging
     steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-tools/action.yml
+        with:
+          terraform-version: '1.7.0'
       - run: echo "Deploying to staging..."
 
   deploy-production:
@@ -106,6 +109,10 @@ Ajouter au pipeline :
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-tools/action.yml
+        with:
+          terraform-version: '1.7.0'
       - run: echo "Deploying to production..."
 ```
 
